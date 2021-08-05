@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoginPocApi", "LoginPoc\Log
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{19F753B0-89D7-4448-BA04-012F0C595551}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{2B32271D-73B6-4493-94C5-8B413DD0BDD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{19F753B0-89D7-4448-BA04-012F0C595551}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F753B0-89D7-4448-BA04-012F0C595551}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19F753B0-89D7-4448-BA04-012F0C595551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B32271D-73B6-4493-94C5-8B413DD0BDD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B32271D-73B6-4493-94C5-8B413DD0BDD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B32271D-73B6-4493-94C5-8B413DD0BDD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B32271D-73B6-4493-94C5-8B413DD0BDD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
