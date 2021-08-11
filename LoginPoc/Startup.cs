@@ -60,16 +60,23 @@ namespace LoginPoc
                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
                };
            });
-        
-        services.AddMvc(options =>
+
+            services.AddMvc(options =>
+                {
+                    var policy = new AuthorizationPolicyBuilder()
+                                    .RequireAuthenticatedUser()
+                                    .Build();
+                    options.Filters.Add(new AuthorizeFilter(policy));
+                    options.EnableEndpointRouting = false;
+                }
+                );
+            services.AddCors(options =>
             {
-                var policy = new AuthorizationPolicyBuilder()
-                                .RequireAuthenticatedUser()
-                                .Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
-                options.EnableEndpointRouting = false;
-            }
-            );
+                options.AddPolicy("EnableCORS", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials().Build();
+                });
+            });
             services.AddControllers();
         }
 
@@ -80,6 +87,14 @@ namespace LoginPoc
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("EnableCORS");
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action=Index}/{id?}");
+            });
 
             //app.UseRouting();
             app.UseAuthentication();
