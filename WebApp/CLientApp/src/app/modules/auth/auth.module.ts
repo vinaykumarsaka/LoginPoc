@@ -7,16 +7,15 @@ import { MatFormFieldModule} from '@angular/material/form-field'
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import {ReactiveFormsModule,FormsModule} from '@angular/forms'
-import { SigninComponent } from './signin.component';
+import { SigninComponent } from './signin/signin.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {SinginRouting} from './singin-routing'
 
+import { AuthRoutingModule } from './auth-routing.module';
 
 
 @NgModule({
   declarations: [SigninComponent],
   imports: [
-    RouterModule.forChild(SinginRouting),
     MatButtonModule,
     MatCheckboxModule,
     MatFormFieldModule,
@@ -26,7 +25,8 @@ import {SinginRouting} from './singin-routing'
     FormsModule,
     CommonModule,
     RouterModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    AuthRoutingModule
   ]
 })
-export class SigninModule { }
+export class AuthModule { }
