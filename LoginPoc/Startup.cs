@@ -70,11 +70,18 @@ namespace LoginPoc
                     options.EnableEndpointRouting = false;
                 }
                 );
+            // app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowAnyCredentials());
+ //           builder.AllowAnyOrigin()
+ //.AllowAnyMethod()
+ //.AllowAnyHeader();
             services.AddCors(options =>
             {
                 options.AddPolicy("EnableCORS", builder =>
                 {
-                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials().Build();
+                    builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                   // AllowCredentials().SetIsOriginAllowed(hostName => true);
                 });
             });
             services.AddControllers();
@@ -87,8 +94,8 @@ namespace LoginPoc
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors("EnableCORS");
 
+            app.UseCors("EnableCORS");
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -98,7 +105,7 @@ namespace LoginPoc
 
             //app.UseRouting();
             app.UseAuthentication();
-            app.UseMvc();
+           // app.UseMvc();
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapControllers();

@@ -68,7 +68,7 @@ namespace LoginPoc.Controllers
             try
             {
 
-                var user = await userManger.FindByNameAsync(model.UserName);
+                var user = await userManger.FindByEmailAsync(model.UserName);
                 //var result = await userManger.CreateAsync(user, model.Password);
                 var result = await signInManager.PasswordSignInAsync(user, model.Password,false/* model.RememberMe*/,false);
                 if (result.Succeeded)
