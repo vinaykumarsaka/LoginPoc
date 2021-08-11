@@ -33,7 +33,9 @@ export class SigninComponent implements OnInit {
 
     submitLogin(event)
     {
-      debugger;
+      event.preventDefault();
+      debugger
+      let loginDetails = this.signInForm.value;
+      this.authService.login(loginDetails.email, loginDetails.password)
     }
-
 }
