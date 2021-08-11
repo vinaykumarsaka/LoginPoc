@@ -10,7 +10,7 @@ import { HttpClientJsonpModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './interceptors/header.interceptor';
 import { HeaderComponent } from './layout/header/header.component';
 import { AuthServiceService } from './services/auth-service.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -25,7 +25,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    HttpClient,
     HttpClientModule
   ],
   providers: [
