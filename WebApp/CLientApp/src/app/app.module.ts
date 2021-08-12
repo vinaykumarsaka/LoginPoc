@@ -11,6 +11,7 @@ import { HeaderInterceptor } from './interceptors/header.interceptor';
 import { HeaderComponent } from './layout/header/header.component';
 import { AuthServiceService } from './services/auth-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 
 @NgModule({
@@ -29,8 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     AuthServiceService,
-    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true }
-    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
+     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

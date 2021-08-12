@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent } from './modules/auth/signin/signin.component';
+import { HomeComponent } from './modules/home/home.component';
 
 // const routes: Routes = [
 
@@ -30,11 +31,13 @@ import { SigninComponent } from './modules/auth/signin/signin.component';
 //   },
 // ];
 
-const routes=[
+const routes: Routes=[
   {path: '', 
     loadChildren: ()=>import('./modules/auth/auth.module').then(m => m.AuthModule)
   },
-  
+  {
+    path: 'home', pathMatch: 'full', component: HomeComponent
+  }
 ]
 
 @NgModule({

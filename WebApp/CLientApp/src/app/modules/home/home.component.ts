@@ -3,22 +3,20 @@ import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
-  isLoggedIn: boolean;
   constructor(private authService: AuthServiceService, private router: Router) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedIn();
+    
+    if(!this.authService.isLoggedIn())
+    {
+    this.router.navigate(['/signin']);
+    }
   }
 
-  logout() {
-    this.authService.logout();
-    this.isLoggedIn = false;
-    this.router.navigate(['/signin']);
-  }
 }

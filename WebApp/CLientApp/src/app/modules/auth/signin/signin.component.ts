@@ -12,7 +12,7 @@ import {AuthServiceService} from '../../../services/auth-service.service';
 export class SigninComponent implements OnInit {
   @ViewChild('signInNgForm') signInNgForm: NgForm;
   signInForm: FormGroup;
-  constructor(private _formBuilder: FormBuilder,private authService:AuthServiceService) { 
+  constructor(private _formBuilder: FormBuilder,private authService:AuthServiceService, private router: Router) { 
     this.signInForm = this._formBuilder.group({
       email     : ['', [Validators.required, Validators.email]],
       password  : ['', Validators.required],
@@ -23,7 +23,10 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void
     {
         // Create the form
-       
+        if(this.authService.isLoggedIn())
+        {
+        this.router.navigate(['/home']);
+        }
     }
 
     signIn()
@@ -34,17 +37,14 @@ export class SigninComponent implements OnInit {
     submitLogin(event)
     {
       event.preventDefault();
-      debugger
       let loginDetails = this.signInForm.value;
       this.authService.login(loginDetails.email, loginDetails.password)
       .subscribe(
-        data => {
-         debugger;
-        });
-        // (error: HttpErrorResponse) => {
-
-        //   this.messageService.add({ severity: 'error', summary: 'Error Message', detail: error.error });
-        //   this.submitClick = false;
-        // });
+        user => {
+          if(user){
+            this.router.navigate(['/home']);
+            window.location.reload();
+          }
+        } , err => {console.log('Err', err);});
     }
 }

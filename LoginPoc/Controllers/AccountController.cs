@@ -75,7 +75,7 @@ namespace LoginPoc.Controllers
                 {
                     var token = GenerateJSONWebToken(user,"Admin");
                     // response = Ok(new { token = tokenString, Name = user.LastName + "," + user.FirstName });
-                    response = Ok(new { Name = user.UserName,BeareToken=token });
+                    response = Ok(new { Name = user.UserName,BearerToken=token });
                 }
 
                 return response;
