@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { SharedService } from 'src/app/services/shared/shared.service';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +11,13 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean;
-  constructor(private authService: AuthServiceService, private router: Router) { }
+  selectedTheme: string = 'blue';
+  constructor(private authService: AuthServiceService, private router: Router, public sharedService: SharedService) { 
+  }
 
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
+    this.sharedService.themeChange.subscribe(thm => this.selectedTheme = thm);
   }
 
   logout() {
@@ -21,4 +25,5 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = false;
     this.router.navigate(['/signin']);
   }
+  
 }

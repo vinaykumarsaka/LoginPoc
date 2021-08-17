@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar [ngClass]="selectedTheme">
     <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
     <span class="flex-spacer"></span>
     <a *ngIf="!isLoggedIn" mat-button routerLink="/signin" routerLinkActive="active"> Sign In</a>

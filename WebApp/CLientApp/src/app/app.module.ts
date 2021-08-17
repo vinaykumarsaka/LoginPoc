@@ -12,6 +12,8 @@ import { HeaderComponent } from './layout/header/header.component';
 import { AuthServiceService } from './services/auth-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { HomeComponent } from './modules/home/home.component';
+import { SharedService } from './services/shared/shared.service';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     AuthServiceService,
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+     HomeComponent,
+     SharedService
   ],
   bootstrap: [AppComponent]
 })

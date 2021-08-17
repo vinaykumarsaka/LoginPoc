@@ -13,14 +13,16 @@ import {MatCardModule} from '@angular/material/card';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SignupComponent } from './signup/signup.component';
+import { HomeComponent } from '../home/home.component';
 
 
 @NgModule({
-  declarations: [SigninComponent, SignupComponent],
+  declarations: [SigninComponent, SignupComponent, HomeComponent],
   imports: [
     MatButtonModule,
     MatCheckboxModule,
@@ -36,6 +38,7 @@ import { SignupComponent } from './signup/signup.component';
     MatToolbarModule,
     MatListModule,
     MatGridListModule,
+    MatSidenavModule,
     AuthRoutingModule,
     FlexLayoutModule
   ]

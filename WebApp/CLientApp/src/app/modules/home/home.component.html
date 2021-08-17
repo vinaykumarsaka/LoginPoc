@@ -1,1 +1,20 @@
-<p>home works!</p>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <p>Change Your Theme</p>
+        <div>
+            <div class="btn-wrapper">
+              <button mat-mini-fab class="btn btn-default" (click)="changeTheme('blue')"></button>
+              <button mat-mini-fab class="btn btn-purple" (click)="changeTheme('purple')"></button>
+              <button mat-mini-fab class="btn btn-pink" (click)="changeTheme('pink')"></button>
+              <button mat-mini-fab class="btn btn-deep-orange" (click)="changeTheme('orange')"></button>
+            </div>
+          </div>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content">
+      <button type="button" mat-button (click)="drawer.toggle()">
+        Change Theme
+      </button>
+    </div>
+  
+  </mat-drawer-container>
