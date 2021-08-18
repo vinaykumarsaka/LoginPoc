@@ -47,4 +47,25 @@ export class SigninComponent implements OnInit {
           }
         } , err => {console.log('Err', err);});
     }
+
+    public externalLogin = () => {
+      this.authService.signInWithGoogle()
+      .then(res => {
+        debugger;
+        const user: any = { ...res };
+        console.log(user);
+        this.validateExternalAuth(user.provider,user.idToken);
+      }, error => console.log(error))
+    }
+
+    private validateExternalAuth(provider:string, idToken:string ) {
+      this.authService.externalLogin(provider, idToken)
+      .subscribe(
+        user => {
+          if(user){
+            this.router.navigate(['/home']);
+            window.location.reload();
+          }
+        } , err => {console.log('Err', err);});
+    }
 }

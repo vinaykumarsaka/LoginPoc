@@ -10,4 +10,10 @@ namespace DataAccess.Models
         public string Password { get; set; }
         public bool? RememberMe { get; set;}
     }
+
+    public class ExternalAuthDto
+    {
+        public string Provider { get; set; }
+        public string IdToken { get; set; }
+    }
 }

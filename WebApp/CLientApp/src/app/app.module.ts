@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { HomeComponent } from './modules/home/home.component';
 import { SharedService } from './services/shared/shared.service';
+import {SocialLoginModule,SocialAuthServiceConfig,GoogleLoginProvider} from 'angularx-social-login'
 
 
 @NgModule({
@@ -28,14 +29,29 @@ import { SharedService } from './services/shared/shared.service';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    SocialLoginModule
   ],
   providers: [
     AuthServiceService,
     { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
      HomeComponent,
-     SharedService
+     SharedService,
+     {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '467909176689-40h3e8angr5sutrfnbavoss46oadph1e.apps.googleusercontent.com'
+            )
+          },
+        ],
+      } as SocialAuthServiceConfig
+    }
   ],
   bootstrap: [AppComponent]
 })
